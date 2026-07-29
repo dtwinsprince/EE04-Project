@@ -3,52 +3,52 @@ import os
 import random
 import sys
 
-API_URL = "https://api.github.com/repos/spMohanty/PlantVillage-Dataset/contents/raw/color/{folder}"
+apiurl = "https://api.github.com/repos/spMohanty/PlantVillage-Dataset/contents/raw/color/{folder}"
 
-FOLDERS = {
+folders = {
     "early_blight": "Potato___Early_blight",
     "healthy": "Potato___healthy"
 }
 
-MAX_BYTES_PER_CLASS = 5 * 1024 * 1024
+maxbytesperclass = 5 * 1024 * 1024
 
-def download_class(local_folder, repo_folder):
-    print(f"Listing files in {repo_folder}...")
-    resp = requests.get(API_URL.format(folder=repo_folder))
-    resp.raise_for_status()
-    items = resp.json()
+def downloadclass(localfolder, repofolder):
+    print(f"Listing files in {repofolder}...")
+    response = requests.get(apiurl.format(folder=repofolder))
+    response.raise_for_status()
+    itemslist = response.json()
 
-    files = [item for item in items if item["type"] == "file"]
-    random.shuffle(files)
+    filesonly = [currentitem for currentitem in itemslist if currentitem["type"] == "file"]
+    random.shuffle(filesonly)
 
-    dest_dir = os.path.join("dataset", local_folder)
-    os.makedirs(dest_dir, exist_ok=True)
+    destinationfolder = os.path.join("dataset", localfolder)
+    os.makedirs(destinationfolder, exist_ok=True)
 
-    total_bytes = 0
-    count = 0
-    for item in files:
-        if total_bytes >= MAX_BYTES_PER_CLASS:
+    totalbytes = 0
+    imagecount = 0
+    for currentitem in filesonly:
+        if totalbytes >= maxbytesperclass:
             break
-        img_resp = requests.get(item["download_url"])
-        img_resp.raise_for_status()
-        filepath = os.path.join(dest_dir, item["name"])
-        with open(filepath, "wb") as f:
-            f.write(img_resp.content)
-        total_bytes += len(img_resp.content)
-        count += 1
+        imageresponse = requests.get(currentitem["download_url"])
+        imageresponse.raise_for_status()
+        filepath = os.path.join(destinationfolder, currentitem["name"])
+        with open(filepath, "wb") as outfile:
+            outfile.write(imageresponse.content)
+        totalbytes += len(imageresponse.content)
+        imagecount += 1
 
-    print(f"{local_folder}: {count} images, {total_bytes / 1024 / 1024:.2f} MB")
+    print(f"{localfolder}: {imagecount} images, {totalbytes / 1024 / 1024:.2f} MB")
 
 def main():
     if len(sys.argv) > 1:
-        choice = sys.argv[1]
-        if choice not in FOLDERS:
-            print(f"Unknown class '{choice}'. Use 'early_blight' or 'healthy'.")
+        selectedclass = sys.argv[1]
+        if selectedclass not in folders:
+            print(f"Unknown class '{selectedclass}'. Use 'early_blight' or 'healthy'.")
             return
-        download_class(choice, FOLDERS[choice])
+        downloadclass(selectedclass, folders[selectedclass])
     else:
-        for local_folder, repo_folder in FOLDERS.items():
-            download_class(local_folder, repo_folder)
+        for localfolder, repofolder in folders.items():
+            downloadclass(localfolder, repofolder)
 
 if __name__ == "__main__":
     main()
