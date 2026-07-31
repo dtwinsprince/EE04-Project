@@ -97,6 +97,10 @@ Specify a license here (e.g., MIT) or note that this is an academic project subm
 Machine learning web application built with Streamlit and TensorFlow for identifying potato leaf diseases (EE04 Engineering Project)</p>
 <p>23/EG/EE/071</p>
 <p>24/EG/EE/371</p>
+
+
+<p>23/EG/EE/101</p>
+=======
 <p>23/EG/EE/061</p>
 
 <p>23/EG/EE/081</p>
@@ -274,4 +278,4 @@ streamlit run app.py
 
 * **Name:** Johnson Gideon Mfon
 * **Reg No:** 23/EG/EE/121
-* **Department:** Electrical & Electronic
+* **Department:** Electrical & Electronics
