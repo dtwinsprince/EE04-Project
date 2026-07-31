@@ -171,3 +171,105 @@ streamlit run app.py
 Akpan, Success Aniefiok
 23/EG/EE/031
 Electrical & Electronics Engineering
+
+
+
+# Potato Disease & Citrus Quality Classifier (EE04 Project)
+
+This repository contains my **EE04 Project**, focusing on lightweight deep learning web applications designed for automated agricultural vision tasks using Convolutional Neural Networks (CNNs) and Streamlit.
+
+---
+
+## 📌 Project Overview
+
+Developed as part of the EE04 engineering coursework, this project implements interactive computer vision models to evaluate crop health and fruit condition:
+
+1. **Potato Leaf Disease Classifier:** Identifies and classifies leaf health into *Healthy* vs. *Early Blight*.
+2. **Citrus Quality & Ripeness Evaluator:** Analyzes citrus fruit conditions into *Fresh/Ripe* vs. *Defective/Rotten*.
+
+The project demonstrates an end-to-end Machine Learning pipeline—covering custom dataset sourcing, transfer learning fine-tuning, model optimization, and a responsive web interface.
+
+---
+
+## 🛠️ Technical Stack & Architecture
+
+* **Core Engine:** Python 3.10+, TensorFlow / Keras
+* **Model Backbone:** EfficientNetB0 (Transfer Learning with custom binary head)
+* **Frontend UI:** Streamlit (Custom Responsive Layout)
+* **Data Processing:** OpenCV, PIL, NumPy
+* **Evaluation Metrics:** Confusion Matrix, Precision, Recall, Loss/Accuracy Curves
+
+---
+
+## 📂 Repository Structure
+
+```text
+EE04-Project/
+├── EE04/
+│   ├── app.py                      # Main Streamlit web app interface
+│   ├── train_potato.ipynb          # Training notebook for Potato Leaf Disease
+│   ├── train_citrus.ipynb          # Training notebook for Citrus Quality
+│   ├── models/
+│   │   ├── potato_model.keras      # Saved Keras model for potato leaf classifier
+│   │   └── citrus_model.keras      # Saved Keras model for fruit quality evaluator
+│   └── dataset/                    # Evaluation image directories
+├── .gitignore
+├── requirements.txt
+└── README.md
+
+```
+
+---
+
+## 🔍 Key Insights & Technical Observations
+
+Building and deploying these lightweight vision pipelines provided critical engineering takeaways regarding model behavior in practical settings:
+
+### 1. Robustness Against Visual Noise & Background Clutter
+
+* Models trained exclusively on studio-style images (single leaf on a plain background) struggle when deployed in natural field conditions (soil, multi-leaf clusters, direct sunlight).
+* **Observation:** Incorporating aggressive Data Augmentation (random rotation, shear, brightness variation, and zoom) significantly reduced false positive rates under real field conditions.
+
+### 2. Fine-Tuning vs. Feature Extraction
+
+* Unfreezing the top layer blocks of the pre-trained EfficientNetB0 backbone allowed the network to adapt better to localized biological patterns (e.g., small early blight lesions on potato leaves) compared to completely frozen feature extractors.
+
+### 3. Preprocessing Dependencies & Deployment Latency
+
+* Ensuring exact alignment between training preprocessing and inference pipelines (e.g., matching normalizations) was crucial for maintaining classification accuracy during live Streamlit deployment.
+
+---
+
+## 🚀 How to Run Locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/johnsongideon/EE04-Project.git
+cd EE04-Project/EE04
+
+```
+
+### 2. Set Up Environment & Dependencies
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+pip install -r requirements.txt
+
+```
+
+### 3. Launch the Streamlit Web App
+
+```bash
+streamlit run app.py
+
+```
+
+---
+
+## 👤 Author
+
+* **Name:** Johnson Gideon Mfon
+* **Reg No:** 23/EG/EE/121
+* **Department:** Electrical & Electronics Engineering
