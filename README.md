@@ -99,3 +99,75 @@ Machine learning web application built with Streamlit and TensorFlow for identif
 <p>24/EG/EE/371</p>
 <p>23/EG/EE/061</p>
 <p>23/EG/EE/001</p>
+
+# Potato & Banana Disease / Ripeness Classifier (EE04 Project)
+
+This repository contains my **EE04 Project**, focused on building lightweight computer vision web applications to classify agricultural images using Convolutional Neural Networks (CNNs) and Streamlit.
+
+---
+
+## 📌 Project Overview
+
+As part of my EE04 coursework, I developed interactive classification models to evaluate leaf health and fruit status:
+1. **Potato Leaf Disease Classifier:** Classifies potato leaf images into *Healthy* vs. *Early Blight*.
+2. **Banana Ripeness Analyzer:** Evaluates banana images into *Ripe* vs. *Unripe* states.
+
+The main objective was to create a functional end-to-end pipeline—from dataset sourcing and transfer learning to a mobile-responsive web app deployment.
+
+---
+
+## 🛠️ Technical Stack & Architecture
+
+* **Framework:** Python, TensorFlow / Keras
+* **Model Architecture:** MobileNetV2 (Transfer Learning with custom binary classification heads)
+* **Frontend UI:** Streamlit
+* **Image Processing:** OpenCV / PIL, MobileNetV2 preprocessing utilities
+
+---
+
+## 📂 Repository Structure
+
+EE04-Project/
+├── EE04/
+│   ├── app.py                 # Streamlit application interface
+│   ├── train_banana.ipynb     # Model training notebook for Banana Ripeness
+│   ├── banana_model.keras     # Saved TensorFlow Keras model
+│   └── dataset/               # Sourced image classes (Ripe vs. Unripe)
+├── .gitignore
+└── README.md
+
+---
+
+## 🔍 Key Insights & Observed Limitations
+
+Developing and testing these models highlighted important real-world computer vision behaviors:
+
+### 1. Studio vs. Field Image Generalization (Domain Shift)
+* The leaf disease classifier was trained primarily on studio-style dataset images (single leaf, isolated plain background, controlled lighting).
+* **Observed Behavior:** When tested on real field photos (natural garden environments, outdoor sunlight, background soil, or multi-leaf clusters), the model can produce high-confidence false predictions due to background interference.
+* **Takeaway:** Model confidence scores do not inherently measure out-of-distribution input validity. High accuracy on studio validation sets does not automatically translate to complex field settings without field-sampled training data.
+
+### 2. Preprocessing Dependencies
+* Using standard pixel normalization (`/ 255.0`) vs. model-specific preprocessing functions (`tf.keras.applications.mobilenet_v2.preprocess_input`) directly impacts feature extraction accuracy when using transfer learning backbones.
+
+---
+
+## 🚀 How to Run Locally
+
+### 1. Clone the Repository
+git clone https://github.com/eseobodom/EE04-Project.git
+cd EE04-Project/EE04
+
+### 2. Install Dependencies
+pip install -r requirements.txt
+
+### 3. Launch Streamlit Application
+streamlit run app.py
+
+---
+
+## 👤 Author
+
+Akpan, Success Aniefiok
+23/EG/EE/031
+Electrical & Electronics Engineering
