@@ -7,7 +7,7 @@ Machine learning web application built with **Streamlit** and **TensorFlow** for
 - 23/EG/EE/071
 - 24/EG/EE/371
 - 23/EG/EE/061
-
+- 23/EG/EE/001
 ## 📋 Overview
 
 This project uses a deep learning model to classify potato leaf images into disease categories, helping farmers and agronomists quickly identify plant health issues through a simple web interface.
@@ -90,7 +90,7 @@ The classification model was trained on a dataset of potato leaf images labeled 
 | —    | 23/EG/EE/071 |
 | —    | 24/EG/EE/371 |
 | —    | 23/EG/EE/061 |
-
+| —    | 23/EG/EE/001 |
 ## 📄 License
 
 Specify a license here (e.g., MIT) or note that this is an academic project submitted as part of the EE04 Engineering curriculum.
@@ -98,3 +98,4 @@ Machine learning web application built with Streamlit and TensorFlow for identif
 <p>23/EG/EE/071</p>
 <p>24/EG/EE/371</p>
 <p>23/EG/EE/061</p>
+<p>23/EG/EE/001</p>
