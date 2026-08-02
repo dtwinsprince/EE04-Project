@@ -367,3 +367,6 @@ Michael Anieofon Edet
 Matriculation Number: 23/EG/EE/011
 
 Department of Electrical and Electronics Engineering
+
+The project is a prototype for detecting early blight from a potato leaf photo. It is meant to help catch early blight sooner, giving farmers a quicker first read on their crop's condition
+23/EG/EE/051
