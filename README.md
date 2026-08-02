@@ -279,3 +279,91 @@ streamlit run app.py
 * **Name:** Johnson Gideon Mfon
 * **Reg No:** 23/EG/EE/121
 * **Department:** Electrical & Electronics
+
+
+Potato & Banana Disease and Ripeness Classifier (EE04 Project)
+
+This repository contains my EE04 Project, which focuses on developing lightweight computer vision applications for agricultural image classification using Convolutional Neural Networks (CNNs) and Streamlit.
+
+---
+
+📌 Project Overview
+
+This project demonstrates the application of deep learning techniques to solve practical agricultural problems through image classification. It consists of two interactive machine learning models:
+
+- Potato Leaf Disease Classifier – Detects whether a potato leaf is Healthy or affected by Early Blight.
+- Banana Ripeness Classifier – Determines whether a banana is Ripe or Unripe.
+
+The project covers the complete machine learning workflow, including dataset preparation, transfer learning, model training, evaluation, and deployment through an intuitive, mobile-friendly Streamlit web application.
+
+---
+
+🛠️ Technologies Used
+
+- Programming Language: Python
+- Deep Learning Framework: TensorFlow / Keras
+- Model Architecture: MobileNetV2 (Transfer Learning with custom binary classification layers)
+- Web Interface: Streamlit
+- Image Processing: OpenCV, Pillow (PIL), MobileNetV2 preprocessing utilities
+
+---
+
+📂 Project Structure
+
+EE04-Project/
+├── EE04/
+│   ├── app.py                 # Streamlit web application
+│   ├── train_banana.ipynb     # Banana ripeness model training notebook
+│   ├── banana_model.keras     # Trained Keras model
+│   └── dataset/               # Banana image dataset (Ripe & Unripe)
+├── .gitignore
+└── README.md
+
+---
+
+🔍 Findings and Limitations
+
+Building and evaluating these models revealed several practical challenges commonly encountered in real-world computer vision applications.
+
+1. Domain Shift Between Training and Real-World Images
+
+The potato leaf disease model was trained primarily on images captured under controlled conditions, featuring single leaves against clean backgrounds with consistent lighting.
+
+When tested on real-world field images containing complex backgrounds, varying lighting conditions, soil, or multiple leaves, the model occasionally produced high-confidence but incorrect predictions. This highlights the impact of domain shift, where a model performs well on data similar to its training set but struggles with unseen environments.
+
+Key Insight: High confidence does not always indicate correct predictions. Achieving reliable real-world performance requires training on more diverse datasets that closely represent actual field conditions.
+
+2. Importance of Proper Image Preprocessing
+
+Model performance was significantly influenced by the preprocessing technique applied before inference. Using the MobileNetV2-specific preprocessing function produced better feature extraction and classification accuracy than simple pixel normalization ("/255.0").
+
+Key Insight: Matching the preprocessing pipeline to the pretrained model architecture is essential for obtaining optimal results when using transfer learning.
+
+---
+
+🚀 Getting Started
+
+1. Clone the Repository
+
+git clone https://github.com/eseobodom/EE04-Project.git
+cd EE04-Project/EE04
+
+2. Install Dependencies
+
+pip install -r requirements.txt
+
+3. Run the Application
+
+streamlit run app.py
+
+The application will launch in your default web browser, allowing you to upload images and receive real-time classification results.
+
+---
+
+👤 Author
+
+Michael Anieofon Edet
+
+Matriculation Number: 23/EG/EE/011
+
+Department of Electrical and Electronics Engineering
